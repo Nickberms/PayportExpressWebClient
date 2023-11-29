@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://web_services/" xmlns:ns1="http://jaxb.dev.java.net/array" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://web_services/">
+
+<xs:import namespace="http://jaxb.dev.java.net/array" schemaLocation="http://136.172.221.198:8084/PayportExpressWeb/EmployeeWebServices?xsd=2" />
+
+<xs:element name="deleteEmployee" type="tns:deleteEmployee" />
+
+<xs:element name="deleteEmployeeResponse" type="tns:deleteEmployeeResponse" />
+
+<xs:element name="employeeLogin" type="tns:employeeLogin" />
+
+<xs:element name="employeeLoginResponse" type="tns:employeeLoginResponse" />
+
+<xs:element name="insertNewEmployee" type="tns:insertNewEmployee" />
+
+<xs:element name="insertNewEmployeeResponse" type="tns:insertNewEmployeeResponse" />
+
+<xs:element name="selectAllEmployees" type="tns:selectAllEmployees" />
+
+<xs:element name="selectAllEmployeesResponse" type="tns:selectAllEmployeesResponse" />
+
+<xs:element name="selectEmployee" type="tns:selectEmployee" />
+
+<xs:element name="selectEmployeeResponse" type="tns:selectEmployeeResponse" />
+
+<xs:element name="updateEmployee" type="tns:updateEmployee" />
+
+<xs:element name="updateEmployeeResponse" type="tns:updateEmployeeResponse" />
+
+<xs:complexType name="selectAllEmployees">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="selectAllEmployeesResponse">
+<xs:sequence>
+<xs:element name="return" type="ns1:stringArray" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteEmployee">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteEmployeeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectEmployee">
+<xs:sequence>
+<xs:element name="employee_id" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectEmployeeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="employeeLogin">
+<xs:sequence>
+<xs:element name="email_address" type="xs:string" minOccurs="0" />
+<xs:element name="password" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="employeeLoginResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertNewEmployee">
+<xs:sequence>
+<xs:element name="branch_stationed" type="xs:int" minOccurs="0" />
+<xs:element name="first_name" type="xs:string" minOccurs="0" />
+<xs:element name="last_name" type="xs:string" minOccurs="0" />
+<xs:element name="birthdate" type="xs:dateTime" minOccurs="0" />
+<xs:element name="sex" type="xs:string" minOccurs="0" />
+<xs:element name="address" type="xs:string" minOccurs="0" />
+<xs:element name="phone_number" type="xs:string" minOccurs="0" />
+<xs:element name="email_address" type="xs:string" minOccurs="0" />
+<xs:element name="password" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertNewEmployeeResponse">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="updateEmployee">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int" />
+<xs:element name="branch_stationed" type="xs:int" />
+<xs:element name="working_status" type="xs:string" minOccurs="0" />
+<xs:element name="first_name" type="xs:string" minOccurs="0" />
+<xs:element name="last_name" type="xs:string" minOccurs="0" />
+<xs:element name="birthdate" type="xs:dateTime" minOccurs="0" />
+<xs:element name="sex" type="xs:string" minOccurs="0" />
+<xs:element name="address" type="xs:string" minOccurs="0" />
+<xs:element name="phone_number" type="xs:string" minOccurs="0" />
+<xs:element name="email_address" type="xs:string" minOccurs="0" />
+<xs:element name="password" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateEmployeeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

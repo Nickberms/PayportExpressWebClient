@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://web_services/" xmlns:ns1="http://jaxb.dev.java.net/array" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://web_services/">
+
+<xs:import namespace="http://jaxb.dev.java.net/array" schemaLocation="http://136.172.221.198:8084/PayportExpressWeb/TransactionWebServices?xsd=2" />
+
+<xs:element name="insertNewTransaction" type="tns:insertNewTransaction" />
+
+<xs:element name="insertNewTransactionResponse" type="tns:insertNewTransactionResponse" />
+
+<xs:element name="removeTransaction" type="tns:removeTransaction" />
+
+<xs:element name="removeTransactionResponse" type="tns:removeTransactionResponse" />
+
+<xs:element name="selectAllTransactions" type="tns:selectAllTransactions" />
+
+<xs:element name="selectAllTransactionsResponse" type="tns:selectAllTransactionsResponse" />
+
+<xs:element name="selectTransaction" type="tns:selectTransaction" />
+
+<xs:element name="selectTransactionResponse" type="tns:selectTransactionResponse" />
+
+<xs:element name="sendMoney" type="tns:sendMoney" />
+
+<xs:element name="sendMoneyResponse" type="tns:sendMoneyResponse" />
+
+<xs:element name="verifyTransaction" type="tns:verifyTransaction" />
+
+<xs:element name="verifyTransactionResponse" type="tns:verifyTransactionResponse" />
+
+<xs:element name="withdrawMoney" type="tns:withdrawMoney" />
+
+<xs:element name="withdrawMoneyResponse" type="tns:withdrawMoneyResponse" />
+
+<xs:complexType name="removeTransaction">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeTransactionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectTransaction">
+<xs:sequence>
+<xs:element name="control_number" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectTransactionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectAllTransactions">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="selectAllTransactionsResponse">
+<xs:sequence>
+<xs:element name="return" type="ns1:stringArray" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertNewTransaction">
+<xs:sequence>
+<xs:element name="sender_name" type="xs:string" minOccurs="0" />
+<xs:element name="sender_contact_number" type="xs:string" minOccurs="0" />
+<xs:element name="receiver_name" type="xs:string" minOccurs="0" />
+<xs:element name="receiver_contact_number" type="xs:string" minOccurs="0" />
+<xs:element name="amount" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertNewTransactionResponse">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="sendMoney">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int" />
+<xs:element name="sender_employee" type="xs:int" minOccurs="0" />
+<xs:element name="branch_sent" type="xs:int" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sendMoneyResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="withdrawMoney">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int" />
+<xs:element name="receiver_employee" type="xs:int" minOccurs="0" />
+<xs:element name="branch_withdrawn" type="xs:int" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="withdrawMoneyResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verifyTransaction">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verifyTransactionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

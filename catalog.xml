@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8084/PayportExpressWeb/TransactionWebServices?wsdl" uri="src/conf/xml-resources/web-service-references/TransactionWebServices/wsdl/localhost_8084/PayportExpressWeb/TransactionWebServices.wsdl"/>
+    <system systemId="http://localhost:8084/PayportExpressWeb/TransactionWebServices?xsd=1" uri="src/conf/xml-resources/web-service-references/TransactionWebServices/wsdl/localhost_8084/PayportExpressWeb/TransactionWebServices.xsd_1.xsd"/>
+    <system systemId="http://localhost:8084/PayportExpressWeb/TransactionWebServices?xsd=2" uri="src/conf/xml-resources/web-service-references/TransactionWebServices/wsdl/localhost_8084/PayportExpressWeb/TransactionWebServices.xsd_2.xsd"/>
+    <system systemId="http://localhost:8084/PayportExpressWeb/BranchWebServices?wsdl" uri="src/conf/xml-resources/web-service-references/BranchWebServices/wsdl/localhost_8084/PayportExpressWeb/BranchWebServices.wsdl"/>
+    <system systemId="http://localhost:8084/PayportExpressWeb/BranchWebServices?xsd=1" uri="src/conf/xml-resources/web-service-references/BranchWebServices/wsdl/localhost_8084/PayportExpressWeb/BranchWebServices.xsd_1.xsd"/>
+    <system systemId="http://localhost:8084/PayportExpressWeb/BranchWebServices?xsd=2" uri="src/conf/xml-resources/web-service-references/BranchWebServices/wsdl/localhost_8084/PayportExpressWeb/BranchWebServices.xsd_2.xsd"/>
+    <system systemId="http://localhost:8084/PayportExpressWeb/EmployeeWebServices?wsdl" uri="src/conf/xml-resources/web-service-references/EmployeeWebServices/wsdl/localhost_8084/PayportExpressWeb/EmployeeWebServices.wsdl"/>
+    <system systemId="http://localhost:8084/PayportExpressWeb/EmployeeWebServices?xsd=1" uri="src/conf/xml-resources/web-service-references/EmployeeWebServices/wsdl/localhost_8084/PayportExpressWeb/EmployeeWebServices.xsd_1.xsd"/>
+    <system systemId="http://localhost:8084/PayportExpressWeb/EmployeeWebServices?xsd=2" uri="src/conf/xml-resources/web-service-references/EmployeeWebServices/wsdl/localhost_8084/PayportExpressWeb/EmployeeWebServices.xsd_2.xsd"/>
+    <system systemId="http://localhost:8084/PayportExpressWeb/AdminWebServices?wsdl" uri="src/conf/xml-resources/web-service-references/AdminWebServices/wsdl/localhost_8084/PayportExpressWeb/AdminWebServices.wsdl"/>
+    <system systemId="http://localhost:8084/PayportExpressWeb/AdminWebServices?xsd=1" uri="src/conf/xml-resources/web-service-references/AdminWebServices/wsdl/localhost_8084/PayportExpressWeb/AdminWebServices.xsd_1.xsd"/>
+</catalog>
