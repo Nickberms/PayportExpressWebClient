@@ -9,6 +9,8 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
         <script type="text/javascript" src="scripts.js"></script>
         <%
+            BranchWebServices_Service branch_service = new BranchWebServices_Service();
+            BranchWebServices branch_port = branch_service.getBranchWebServicesPort();
             EmployeeWebServices_Service employee_service = new EmployeeWebServices_Service();
             EmployeeWebServices employee_port = employee_service.getEmployeeWebServicesPort();
         %>
@@ -30,9 +32,21 @@
                     String password = request.getParameter("password");
                     List<String> employee = employee_port.employeeLogin(emailAddress, password);
                     if (employee != null) {
-                        String working_status = employee.get(2);
-                        if ("Fired".equals(working_status)) {
+                        String workingStatus = employee.get(2);
+                        int branchId = Integer.parseInt(employee.get(1));
+                        List<String> branch = null;
+                        try {
+                            branch = branch_port.selectBranch(branchId);
+                        } catch (Exception error) {
+                            error.printStackTrace();
+                        }
+                        String operationStatus = branch.get(1);
+                        if ("Fired".equals(workingStatus)) {
                             errorMessage = "Access is prohibited for former employees.";
+                        } else if ("On Leave".equals(workingStatus)) {
+                            errorMessage = "Access is prohibited for employees on leave.";
+                        } else if ("Inactive".equals(operationStatus)) {
+                            errorMessage = "Access is prohibited for employees at inactive branches.";
                         } else {
                             session = request.getSession(true);
                             session.setAttribute("employeeId", employee.get(0));

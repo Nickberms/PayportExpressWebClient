@@ -134,7 +134,7 @@
                     <td><%= employee[9]%></td>
                     <td>
                         <a href="update_employee_form.jsp?employeeId=<%= employee[0]%>">Update</a>
-                        <a href="manage_employees_view.jsp?action=delete&employeeId=<%= employee[0]%>" onclick="return confirm('Delete employee? You might not be able to if it still holds records');">Delete</a>
+                        <a href="manage_employees_view.jsp?action=delete&employeeId=<%= employee[0]%>" onclick="return confirm('Delete employee? Make sure it does not hold any records anymore');">Delete</a>
                     </td>
                 </tr>
                 <%

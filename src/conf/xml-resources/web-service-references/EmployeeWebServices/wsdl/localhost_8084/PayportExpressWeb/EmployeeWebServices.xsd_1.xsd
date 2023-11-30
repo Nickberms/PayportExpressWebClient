@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://web_services/" xmlns:ns1="http://jaxb.dev.java.net/array" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://web_services/">
 
-<xs:import namespace="http://jaxb.dev.java.net/array" schemaLocation="http://136.172.221.198:8084/PayportExpressWeb/EmployeeWebServices?xsd=2" />
+<xs:import namespace="http://jaxb.dev.java.net/array" schemaLocation="http://localhost:8084/PayportExpressWeb/EmployeeWebServices?xsd=2" />
 
 <xs:element name="deleteEmployee" type="tns:deleteEmployee" />
 

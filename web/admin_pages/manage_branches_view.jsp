@@ -110,7 +110,7 @@
                     <td><%= branch[3]%></td>
                     <td>
                         <a href="update_branch_form.jsp?branchId=<%= branch[0]%>">Update</a>
-                        <a href="manage_branches_view.jsp?action=delete&branchId=<%= branch[0]%>" onclick="return confirm('Delete branch? You might not be able to if it still holds records');">Delete</a>
+                        <a href="manage_branches_view.jsp?action=delete&branchId=<%= branch[0]%>" onclick="return confirm('Delete branch? Make sure it does not hold any records anymore');">Delete</a>
                     </td>
                 </tr>
                 <%

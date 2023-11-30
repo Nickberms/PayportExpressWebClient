@@ -66,42 +66,43 @@
             try {
                 String controlNumberParam = request.getParameter("controlNumber");
                 int controlNumber = Integer.parseInt(controlNumberParam);
-                if (action.equals("verify")) {
+                if (action.equals("pay")) {
                     List<String> transaction = transaction_port.selectTransaction(controlNumber);
-                    String verificationStatus = transaction.get(1);
-                    if ("Verified".equals(verificationStatus)) {
+                    String feeStatus = transaction.get(1);
+                    if ("Paid".equals(feeStatus)) {
                         response.sendRedirect("manage_transactions_view.jsp");
                     } else {
-                        transaction_port.verifyTransaction(controlNumber);
+                        transaction_port.payServiceFee(controlNumber);
                         response.sendRedirect("manage_transactions_view.jsp");
                     }
                 } else if (action.equals("send")) {
                     List<String> transaction = transaction_port.selectTransaction(controlNumber);
-                    String verificationStatus = transaction.get(1);
-                    String withdrawalStatus = transaction.get(12);
-                    if ("Not Verified".equals(verificationStatus) || withdrawalStatus != null) {
+                    String feeStatus = transaction.get(1);
+                    int branchSent = Integer.parseInt(transaction.get(10));
+                    int branchWithdrawn = Integer.parseInt(transaction.get(11));
+                    if ("Unpaid".equals(feeStatus) || branchSent != 0 || branchWithdrawn != 0) {
                         response.sendRedirect("manage_transactions_view.jsp");
                     } else {
-                        transaction_port.sendMoney(controlNumber, Integer.parseInt(employeeId), branchId);
+                        transaction_port.sendAmount(controlNumber, Integer.parseInt(employeeId), branchId);
                         response.sendRedirect("manage_transactions_view.jsp");
                     }
                 } else if (action.equals("withdraw")) {
                     List<String> transaction = transaction_port.selectTransaction(controlNumber);
-                    String verificationStatus = transaction.get(1);
-                    String withdrawalStatus = transaction.get(12);
-                    if ("Verified".equals(verificationStatus) && "Not Withdrawn".equals(withdrawalStatus)) {
-                        transaction_port.withdrawMoney(controlNumber, Integer.parseInt(employeeId), branchId);
+                    int branchSent = Integer.parseInt(transaction.get(10));
+                    int branchWithdrawn = Integer.parseInt(transaction.get(11));
+                    if (branchSent != 0 && branchWithdrawn == 0) {
+                        transaction_port.withdrawAmount(controlNumber, Integer.parseInt(employeeId), branchId);
                         response.sendRedirect("manage_transactions_view.jsp");
                     } else {
                         response.sendRedirect("manage_transactions_view.jsp");
                     }
-                } else if (action.equals("remove")) {
+                } else if (action.equals("delete")) {
                     List<String> transaction = transaction_port.selectTransaction(controlNumber);
-                    String withdrawalStatus = transaction.get(12);
-                    if ("Not Withdrawn".equals(withdrawalStatus)) {
+                    String feeStatus = transaction.get(1);
+                    if ("Paid".equals(feeStatus)) {
                         response.sendRedirect("manage_transactions_view.jsp");
                     } else {
-                        transaction_port.removeTransaction(controlNumber);
+                        transaction_port.deleteTransaction(controlNumber);
                         response.sendRedirect("manage_transactions_view.jsp");
                     }
                 }
@@ -119,7 +120,8 @@
             <thead>
                 <tr>
                     <th>Control Number</th>
-                    <th>Verification Status</th>
+                    <th>Fee Status</th>
+                    <th>Service Fee</th>
                     <th>Sender Name</th>
                     <th>Sender Contact Number</th>
                     <th>Receiver Name</th>
@@ -130,7 +132,6 @@
                     <th>Branch Sent</th>
                     <th>Branch Withdrawn</th>
                     <th>Date Sent</th>
-                    <th>Withdrawal Status</th>
                     <th>Date Withdrawn</th>
                     <th>Actions</th>
                 </tr>
@@ -178,7 +179,7 @@
                                 }
                             }
                         }
-                        if (matchesKeyword && !"Removed".equals(transaction[1])) {
+                        if (matchesKeyword) {
                 %>
                 <tr>
                     <td><%= transaction[0]%></td>
@@ -188,18 +189,18 @@
                     <td><%= transaction[4]%></td>
                     <td><%= transaction[5]%></td>
                     <td><%= transaction[6]%></td>
-                    <td><%= ("0".equals(transaction[7])) ? "" : transaction[7] + " " + employeeMap.getOrDefault(transaction[7], "")%></td>
+                    <td><%= transaction[7]%></td>
                     <td><%= ("0".equals(transaction[8])) ? "" : transaction[8] + " " + employeeMap.getOrDefault(transaction[8], "")%></td>
-                    <td><%= ("0".equals(transaction[9])) ? "" : transaction[9] + " " + branchMap.getOrDefault(transaction[9], "")%></td>
+                    <td><%= ("0".equals(transaction[9])) ? "" : transaction[9] + " " + employeeMap.getOrDefault(transaction[9], "")%></td>
                     <td><%= ("0".equals(transaction[10])) ? "" : transaction[10] + " " + branchMap.getOrDefault(transaction[10], "")%></td>
-                    <td><%= (transaction[11] != null && !transaction[11].isEmpty()) ? transaction[11] : ""%></td>
+                    <td><%= ("0".equals(transaction[11])) ? "" : transaction[11] + " " + branchMap.getOrDefault(transaction[11], "")%></td>
                     <td><%= (transaction[12] != null && !transaction[12].isEmpty()) ? transaction[12] : ""%></td>
                     <td><%= (transaction[13] != null && !transaction[13].isEmpty()) ? transaction[13] : ""%></td>
                     <td>
-                        <a href="manage_transactions_view.jsp?action=verify&controlNumber=<%= transaction[0]%>" onclick="return confirm('Verify transaction? This action cannot be undone');">Verify</a>
-                        <a href="manage_transactions_view.jsp?action=send&controlNumber=<%= transaction[0]%>" onclick="return confirm('Send transaction money? This action cannot be undone');">Send</a>
-                        <a href="manage_transactions_view.jsp?action=withdraw&controlNumber=<%= transaction[0]%>" onclick="return confirm('Withdraw transaction money? This action cannot be undone');">Withdraw</a>
-                        <a href="manage_transactions_view.jsp?action=remove&controlNumber=<%= transaction[0]%>" onclick="return confirm('Remove transaction? This action cannot be undone');">Remove</a>
+                        <a href="manage_transactions_view.jsp?action=pay&controlNumber=<%= transaction[0]%>" onclick="return confirm('Pay service fee? This action cannot be undone');">Pay</a>
+                        <a href="manage_transactions_view.jsp?action=send&controlNumber=<%= transaction[0]%>" onclick="return confirm('Send amount? Make sure it is already been paid');">Send</a>
+                        <a href="manage_transactions_view.jsp?action=withdraw&controlNumber=<%= transaction[0]%>" onclick="return confirm('Withdraw amount? Make sure it is already been sent');">Withdraw</a>
+                        <a href="manage_transactions_view.jsp?action=delete&controlNumber=<%= transaction[0]%>" onclick="return confirm('Delete transaction? Make sure it is still unpaid');">Delete</a>
                     </td>
                 </tr>
                 <%

@@ -28,18 +28,22 @@
             String action = request.getParameter("action");
             try {
                 if (action.equals("insert")) {
-                    String branchName = request.getParameter("branchName");
+                    String branchName = request.getParameter("branchName").trim();
                     branchName = NameFormatter.formatName(branchName);
-                    String town = request.getParameter("town");
+                    String town = request.getParameter("town").trim();
                     town = NameFormatter.formatName(town);
-                    String municipality = request.getParameter("municipality");
+                    String municipality = request.getParameter("municipality").trim();
                     municipality = NameFormatter.formatName(municipality);
-                    String province = request.getParameter("province");
+                    String province = request.getParameter("province").trim();
                     province = NameFormatter.formatName(province);
                     String address = town + ", " + municipality + ", " + province;
                     try {
-                        branch_port.insertNewBranch(branchName, address);
-                        response.sendRedirect("manage_branches_view.jsp");
+                        if (branchName.isEmpty() || town.isEmpty() || municipality.isEmpty() || province.isEmpty()) {
+                            out.println("Sorry, invalid input. Please try again.");
+                        } else {
+                            branch_port.insertNewBranch(branchName, address);
+                            response.sendRedirect("manage_branches_view.jsp");
+                        }
                     } catch (Exception error) {
                         error.printStackTrace();
                     }
