@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `payport_express_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `payport_express_db`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: localhost    Database: payport_express_db
@@ -69,7 +67,7 @@ CREATE TABLE `branches` (
   `date_modified` datetime NOT NULL,
   PRIMARY KEY (`branch_id`),
   UNIQUE KEY `branch_id` (`branch_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,7 +76,7 @@ CREATE TABLE `branches` (
 
 LOCK TABLES `branches` WRITE;
 /*!40000 ALTER TABLE `branches` DISABLE KEYS */;
-INSERT INTO `branches` VALUES (113,'Active','Valencia Branch','Poblacion, Valencia, Bukidnon','2023-12-01 00:06:02','2023-12-01 02:05:34'),(115,'Inactive','Maramag Branch','Musuan, Maramag, Bukidnon','2023-12-01 00:08:49','2023-12-01 00:52:27'),(116,'Active','Don Carlos Branch','Norte, Don Carlos, Bukidnon','2023-12-01 01:00:20','2023-12-01 01:01:17');
+INSERT INTO `branches` VALUES (126,'Active','Branch One','Branch, One, Address','2023-12-05 17:27:33','2023-12-05 17:27:33'),(127,'Active','Branch Two','Branch, Two, Address','2023-12-05 17:27:33','2023-12-05 17:27:33'),(128,'Active','Branch Three','Branch, Three, Address','2023-12-05 17:27:33','2023-12-05 17:27:33'),(129,'Active','Branch Four','Branch, Four, Address','2023-12-05 17:27:33','2023-12-05 17:27:33'),(130,'Active','Branch Five','Branch, Five, Address','2023-12-05 17:27:33','2023-12-05 17:27:33'),(131,'Active','Branch Six','Branch, Six, Address','2023-12-05 17:27:33','2023-12-05 17:27:33'),(132,'Inactive','Branch Seven','Branch, Seven, Address','2023-12-05 17:27:33','2023-12-05 18:32:36'),(133,'Inactive','Branch Eight','Branch, Eight, Address','2023-12-05 17:27:33','2023-12-05 18:32:40'),(134,'Inactive','Branch Nine','Branch, Nine, Address','2023-12-05 17:27:33','2023-12-05 18:32:45'),(135,'Inactive','Branch Ten','Branch, Ten, Address','2023-12-05 17:27:33','2023-12-05 18:32:49');
 /*!40000 ALTER TABLE `branches` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,7 +107,7 @@ CREATE TABLE `employees` (
   UNIQUE KEY `employee_id` (`employee_id`),
   KEY `branch_id_idx` (`branch_stationed`),
   CONSTRAINT `branch_stationed` FOREIGN KEY (`branch_stationed`) REFERENCES `branches` (`branch_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1021 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=1054 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +116,7 @@ CREATE TABLE `employees` (
 
 LOCK TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
-INSERT INTO `employees` VALUES (1014,113,'Active','Employee','One','2023-12-01','Male','Poblacion, Valencia, Bukidnon','09111111111','one@gmail.com','123','2023-12-01 00:11:44','2023-12-01 02:06:33'),(1015,115,'Active','Employee','Two','2023-12-02','Female','Musuan, Maramag, Bukidnon','09222222222','two@gmail.com','123','2023-12-01 00:14:39','2023-12-01 01:19:02'),(1018,116,'On Leave','Employee','Three','2023-12-03','Female','Norte, Don Carlos, Bukidnon','09333333333','three@gmail.com','123','2023-12-01 01:10:45','2023-12-01 02:06:42'),(1019,113,'Fired','Employee','Four','2023-12-04','Female','Poblacion, Valencia, Bukidnon','09444444444','four@gmail.com','123','2023-12-01 01:20:11','2023-12-01 02:05:24');
+INSERT INTO `employees` VALUES (1034,126,'Active','Employee','One','1999-12-01','Male','Employee, One, Address','09111111111','one@gmail.com','123','2023-12-05 17:54:01','2023-12-05 17:54:01'),(1035,127,'Active','Employee','Two','1999-12-02','Female','Employee, Two, Address','09111111112','two@gmail.com','123','2023-12-05 17:54:01','2023-12-05 17:54:01'),(1036,128,'Active','Employee','Three','1999-12-03','Male','Employee, Three, Address','09111111113','three@gmail.com','123','2023-12-05 17:54:01','2023-12-05 17:54:01'),(1037,129,'Active','Employee','Four','1999-12-04','Female','Employee, Four, Address','09111111114','four@gmail.com','123','2023-12-05 17:54:01','2023-12-05 17:54:01'),(1038,130,'On Leave','Employee','Five','1999-12-05','Male','Employee, Five, Address','09111111115','five@gmail.com','123','2023-12-05 17:54:01','2023-12-05 18:27:37'),(1039,131,'On Leave','Employee','Six','1999-12-06','Female','Employee, Six, Address','09111111116','six@gmail.com','123','2023-12-05 17:54:01','2023-12-05 18:27:47'),(1040,132,'On Leave','Employee','Seven','1999-12-07','Male','Employee, Seven, Address','09111111117','seven@gmail.com','123','2023-12-05 17:54:01','2023-12-05 18:27:59'),(1041,133,'Fired','Employee','Eight','1999-12-08','Female','Employee, Eight, Address','09111111118','eight@gmail.com','123','2023-12-05 17:54:01','2023-12-05 18:28:08'),(1042,134,'Fired','Employee','Nine','1999-12-09','Male','Employee, Nine, Address','09111111119','nine@gmail.com','123','2023-12-05 17:54:01','2023-12-05 18:28:13'),(1043,135,'Fired','Employee','Ten','1999-12-10','Female','Employee, Ten, Address','09111111110','ten@gmail.com','123','2023-12-05 17:54:01','2023-12-05 18:28:17');
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,7 +154,7 @@ CREATE TABLE `transactions` (
   CONSTRAINT `branch_withdrawn` FOREIGN KEY (`branch_withdrawn`) REFERENCES `branches` (`branch_id`),
   CONSTRAINT `receiver_employee` FOREIGN KEY (`receiver_employee`) REFERENCES `employees` (`employee_id`),
   CONSTRAINT `sender_employee` FOREIGN KEY (`sender_employee`) REFERENCES `employees` (`employee_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=100039 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=100068 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -165,7 +163,7 @@ CREATE TABLE `transactions` (
 
 LOCK TABLES `transactions` WRITE;
 /*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
-INSERT INTO `transactions` VALUES (100036,'Paid',20,'Sender One','09101010101','Receiver One','09010101010',1000,1014,1015,113,115,'2023-12-01 00:40:06','2023-12-01 00:41:14','2023-12-01 00:38:23','2023-12-01 00:41:14'),(100037,'Paid',40,'Sender Two','09202020202','Receiver Two','09020202020',2000,1018,1019,116,113,'2023-12-01 01:26:14','2023-12-01 01:27:13','2023-12-01 01:23:58','2023-12-01 01:27:13');
+INSERT INTO `transactions` VALUES (100048,'Unpaid',20,'Sender One','09101010101','Receiver One','09020202020',1000,NULL,NULL,NULL,NULL,NULL,NULL,'2023-12-05 18:06:12','2023-12-05 18:06:12'),(100049,'Paid',20,'Sender Two','09101010102','Receiver Two','09020202021',1000,1034,1035,126,127,'2023-12-05 18:23:35','2023-12-05 18:24:17','2023-12-05 18:06:12','2023-12-05 18:24:17'),(100050,'Unpaid',20,'Sender Three','09101010103','Receiver Three','09020202022',1000,NULL,NULL,NULL,NULL,NULL,NULL,'2023-12-05 18:06:12','2023-12-05 18:06:12'),(100051,'Paid',20,'Sender Four','09101010104','Receiver Four','09020202023',1000,1034,1035,126,127,'2023-12-05 18:23:39','2023-12-05 18:24:20','2023-12-05 18:06:12','2023-12-05 18:24:20'),(100052,'Unpaid',20,'Sender Five','09101010105','Receiver Five','09020202024',1000,NULL,NULL,NULL,NULL,NULL,NULL,'2023-12-05 18:06:12','2023-12-05 18:06:12'),(100053,'Paid',20,'Sender Six','09101010106','Receiver Six','09020202025',1000,1034,1035,126,127,'2023-12-05 18:23:42','2023-12-05 18:24:22','2023-12-05 18:06:12','2023-12-05 18:24:22'),(100054,'Unpaid',20,'Sender Seven','09101010107','Receiver Seven','09020202026',1000,NULL,NULL,NULL,NULL,NULL,NULL,'2023-12-05 18:06:12','2023-12-05 18:06:12'),(100055,'Paid',20,'Sender Eight','09101010108','Receiver Eight','09020202027',1000,1034,1035,126,127,'2023-12-05 18:23:45','2023-12-05 18:24:25','2023-12-05 18:06:13','2023-12-05 18:24:25'),(100056,'Unpaid',20,'Sender Nine','09101010109','Receiver Nine','09020202028',1000,NULL,NULL,NULL,NULL,NULL,NULL,'2023-12-05 18:06:13','2023-12-05 18:06:13'),(100057,'Paid',20,'Sender Ten','09101010110','Receiver Ten','09020202029',1000,1034,1035,126,127,'2023-12-05 18:23:47','2023-12-05 18:24:27','2023-12-05 18:06:13','2023-12-05 18:24:27');
 /*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -178,4 +176,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-01  2:23:08
+-- Dump completed on 2023-12-05 20:20:41
